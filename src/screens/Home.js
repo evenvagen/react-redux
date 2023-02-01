@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
  
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../redux/actions/countAction';
+import { increment, decrement, reset } from '../redux/actions/countAction';
  
 export default function Home() {
   const dispatch = useDispatch();
@@ -15,6 +15,10 @@ export default function Home() {
   const handleDecrement = () => {
     dispatch(decrement());
   };
+
+  const handleReset = () => {
+    dispatch(reset());
+  }
  
   return (
     <View style={styles.container}>
@@ -29,6 +33,10 @@ export default function Home() {
         onPress={handleDecrement}
         style={{ ...styles.btn, backgroundColor: '#6e3b3b' }}>
         <Text style={styles.btn_text}> Decrement </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.btn} onPress={handleReset}>
+        <Text style={styles.btn_text}> Reset </Text>
       </TouchableOpacity>
     </View>
   );

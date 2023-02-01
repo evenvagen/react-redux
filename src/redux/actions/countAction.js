@@ -9,3 +9,9 @@ export const decrement = () => {
     type: 'COUNT_DECRESE',
   };
 };
+
+export const reset = () => {
+    return {
+        type: 'COUNT_RESET',
+    };
+}

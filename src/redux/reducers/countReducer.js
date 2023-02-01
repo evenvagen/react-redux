@@ -14,6 +14,11 @@ export default (state = initialState, action) => {
         ...state,
         count: state.count - 1,
       };
+    case 'COUNT_RESET':
+        return {
+            ...state,
+            count: 0, 
+        }
     default:
       return state;
   }
