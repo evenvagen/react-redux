@@ -1,34 +1,39 @@
-import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
  
-export default function Home() {
-  const [counter, setCounter] = useState(0);
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from '../redux/actions/countAction';
  
-  const handleIncreament = () => {
-    setCounter(counter + 1);
+export default function Home() {
+  const dispatch = useDispatch();
+ 
+  const count = useSelector((store) => store.count.count);
+ 
+  const handleIncrement = () => {
+    dispatch(increment());
   };
  
-  const handleDecreament = () => {
-    setCounter(counter - 1);
+  const handleDecrement = () => {
+    dispatch(decrement());
   };
  
   return (
     <View style={styles.container}>
       <Text style={styles.title_text}>Counter App</Text>
-      <Text style={styles.counter_text}>{counter}</Text>
+      <Text style={styles.counter_text}>{count}</Text>
  
-      <TouchableOpacity onPress={handleIncreament} style={styles.btn}>
+      <TouchableOpacity onPress={handleIncrement} style={styles.btn}>
         <Text style={styles.btn_text}> Increment </Text>
       </TouchableOpacity>
  
       <TouchableOpacity
-        onPress={handleDecreament}
+        onPress={handleDecrement}
         style={{ ...styles.btn, backgroundColor: '#6e3b3b' }}>
         <Text style={styles.btn_text}> Decrement </Text>
       </TouchableOpacity>
-   </View>
+    </View>
   );
 }
+ 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
