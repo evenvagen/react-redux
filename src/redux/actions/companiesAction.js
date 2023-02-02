@@ -4,3 +4,10 @@ export const add = (company) => {
         payload: company,
     };
 }
+
+export const remove = (id) => {
+    return {
+        type: 'DELETE_COMPANY',
+        id: id
+    }
+}
