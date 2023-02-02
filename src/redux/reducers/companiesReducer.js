@@ -12,7 +12,7 @@ export default function companiesReducer(state = initialState, action) {
         case 'REMOVE_COMPANY':
             return {
                 ...state,
-                companies: state.filter(({id}) => id !== action.id)
+                companies: state.companies.filter((company) => company.id !== action.id)
             }
         default:
             return state;

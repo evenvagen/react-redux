@@ -7,7 +7,7 @@ export const add = (company) => {
 
 export const remove = (id) => {
     return {
-        type: 'DELETE_COMPANY',
+        type: 'REMOVE_COMPANY',
         id: id
     }
 }

@@ -1,8 +1,10 @@
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { remove } from '../redux/actions/companiesAction';
 
 export function ListCompanies( { navigation } ){
 
+    const dispatch = useDispatch();
     const companies = useSelector((state) => state.companies.companies);
 
     return (
@@ -12,6 +14,11 @@ export function ListCompanies( { navigation } ){
                     return <Text key={company.id} style={styles.text}>{company.name}</Text>
                 })}
             </View>
+
+             <TouchableOpacity  style={{backgroundColor: 'red', padding: 20, marginTop: 30}} onPress={() => dispatch(remove(2))}>
+                <Text>Slett</Text>
+            </TouchableOpacity>
+
             <TouchableOpacity  style={{backgroundColor: 'green', padding: 20, marginTop: 30}} onPress={() => navigation.navigate('Companies')}>
                 <Text>Companies</Text>
             </TouchableOpacity>
